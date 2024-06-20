@@ -1,0 +1,3 @@
+tabler-icons-react => เกี่ยวกับ icon
+react-helmet => ตั้งค่า header
+sweetalert => Modal แจ้งเตือน
