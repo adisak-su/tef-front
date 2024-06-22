@@ -29,12 +29,12 @@ import { saveLocalStorage } from "src/funAuth/localStorage";
 const Profile = () => {
   const navigate = useNavigate();
 
-  const [anchorEl2, setAnchorEl2] = useState(null);
-  const handleClick2 = (event) => {
-    setAnchorEl2(event.currentTarget);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const handleOpen = (event) => {
+    setAnchorEl(event.currentTarget);
   };
-  const handleClose2 = () => {
-    setAnchorEl2(null);
+  const handleClose = () => {
+    setAnchorEl(null);
   };
 
   const clickLogout = () => {
@@ -60,7 +60,7 @@ const Profile = () => {
           display: "flex",
           alignItems: "center",
         }}
-        onClick={handleClick2}
+        onClick={handleOpen}
       >
         <Avatar
           src={ProfileImg}
@@ -81,10 +81,10 @@ const Profile = () => {
       {/* ------------------------------------------- */}
       <Menu
         id="msgs-menu"
-        anchorEl={anchorEl2}
+        anchorEl={anchorEl}
         keepMounted
-        open={Boolean(anchorEl2)}
-        onClose={handleClose2}
+        open={Boolean(anchorEl)}
+        onClose={handleClose}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         sx={{
@@ -93,11 +93,18 @@ const Profile = () => {
           },
         }}
       >
-        <MenuItem>
+        <MenuItem
+          onClick={handleClose}
+        >
           <ListItemIcon>
             <IconUser width={20} />
           </ListItemIcon>
           <ListItemText>My Profile</ListItemText>
+        </MenuItem>
+        <MenuItem
+        onClick={handleClose}
+        >
+          Abc
         </MenuItem>
         <Box mt={1} py={1} px={2}>
           <Button

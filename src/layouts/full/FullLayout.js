@@ -18,6 +18,7 @@ const PageWrapper = styled('div')(() => ({
   paddingBottom: '60px',
   flexDirection: 'column',
   zIndex: 1,
+  width: '100%',
   // backgroundColor: 'transparent',
   backgroundColor: '#F5F5F5',
 }));
@@ -63,7 +64,8 @@ const FullLayout = () => {
           {/* Page Route */}
           {/* ------------------------------------------- */}
           <Box sx={{ minHeight: 'calc(100vh - 180px)'}}>
-            <Outlet width="1500px"/>
+          <Outlet />
+          {/* <Outlet width="1500px"/> */}
           </Box>
           {/* <Box sx={{ minHeight: 'calc(100vh - 170px)',border: "2px solid grey", width:"100vw", maxWidth:"100%" }}>
             <Outlet />
