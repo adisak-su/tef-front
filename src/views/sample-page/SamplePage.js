@@ -4,7 +4,6 @@ import PageContainer from "src/components/container/PageContainer";
 import DashboardCard from "../../components/shared/DashboardCard";
 import CustomizedTables from "./CustomizedTables";
 import BlankCard from "src/components/shared/BlankCard";
-import { Virtuoso } from "react-virtuoso";
 
 const SamplePage = () => {
   // Header align: "center" / "right" / "left" ,
