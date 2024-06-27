@@ -21,6 +21,8 @@ const RegisterCustomerTEF = Loadable(lazy(() => import('../views/register/custom
 
 const RegisterCustomer = Loadable(lazy(() => import('../views/register/customer/RegisterCustomer')));
 
+const CommingSoon = Loadable(lazy(() => import('../views/Error/comming-soon')));
+
 const ProtectedRoute = ({ children }) => {
   const loginStatus = getLocalStorage("loginStatus");
 
@@ -39,6 +41,7 @@ const Router = [
       { path: '/', element: <Navigate to="/dashboard" /> },
       { path: '/dashboard', exact: true, element: <Dashboard /> },
       { path: '/sample-page', exact: true, element: <SamplePage /> },
+      { path: '/comming-soon', exact: true, element: <CommingSoon /> },
       { path: '*', element: <Error404 /> },
     ],
   },
@@ -66,6 +69,7 @@ const Router = [
       { path: '/register-customer/tef', element: <RegisterCustomerTEF /> },
       { path: '/register-customer/fei-thai', element: <RegisterCustomerFEI_Thai /> },
       { path: '/register-customer/fei-inter', element: <RegisterCustomerFEI_Inter /> },
+      { path: '/register-customer/comming-soon', element: <CommingSoon /> },
       { path: '404', element: <Error404 /> },
       { path: '*', element: <Error404 /> },
     ],

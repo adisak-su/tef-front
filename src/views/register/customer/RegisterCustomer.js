@@ -65,7 +65,8 @@ const RegisterCustomer = () => {
     // alert(registerGroup)
     switch (registerGroup) {
       case "Club":
-        navigate("/register-customer/tef");
+        navigate("/register-customer/comming-soon");
+        // navigate("/register-customer/tef");
         break;
       case "TEF":
         navigate("/register-customer/fei-thai");
