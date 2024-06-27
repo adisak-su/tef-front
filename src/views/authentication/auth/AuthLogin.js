@@ -126,15 +126,19 @@ const AuthLogin = ({ title, subtitle, subtext }) => {
         Wellcome to ...
       </Typography>
       <Typography variant="h4" mb={1}>
-        ลงทะเบียนสำหรับผู้ใช้งานใหม่
+      Thailand Equestrain Federation Hub
       </Typography>
       {/* <Typography fontWeight="100" variant="h4_2" mb={1}>
         ลงทะเบียนสำหรับผู้ใช้งานใหม่
       </Typography> */}
       <Box>
-        {"ยังไม่มีบัญชี? "}
+        {/* {"ยังไม่มีบัญชี? "} */}
         <Link to="/register-customer/page">
-          กรอกแบบฟอร์มเพื่อดำเนินการลงทะเบียนเป็นสมาชิก
+        <Typography fontWeight="500" variant="h6" mb={1}>
+        Sign up?
+      </Typography>
+        {/* Sign up? */}
+          {/* กรอกแบบฟอร์มเพื่อดำเนินการลงทะเบียนเป็นสมาชิก */}
         </Link>
       </Box>
       <form onSubmit={checkLogin}>

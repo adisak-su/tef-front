@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {
   Grid,
@@ -28,41 +28,64 @@ import Logo from "src/layouts/full/shared/logo/Logo";
 // import { Select } from "tabler-icons-react";
 
 const RegisterCustomer = () => {
-  const selectNames = [
-    "Oliver Hansen",
-    "Van Henry",
-    "April Tucker",
-    "Ralph Hubbard",
-    "Omar Alexander",
-    "Carlos Abbott",
-    "Miriam Wagner",
-    "Bradley Wilkerson",
-    "Virginia Andrews",
-    "Kelly Snyder",
-  ];
-
   const navigate = useNavigate();
+
+  const clickBackToLogin = () => {
+    // saveLocalStorage("loginStatus", false);
+    navigate("/");
+  };
+
+  const selectNames = [
+    {
+      value: "TEF",
+      name: "Register athletes under the Thailand Equestrian Sports Association (TEF ID)",
+    },
+    {
+      value: "Club",
+      name: "Register club under the Thailand Equestrian Sports Association (CLUB ID)",
+    },
+  ];
 
   const [registerType, setRegisterType] = useState("0");
   const handleChange = (event) => {
     setRegisterType(event.target.value);
     // alert(event.target.value);
   };
-  const [registerGroup, setRegisterGroup] = useState("1");
+  const [registerGroup, setRegisterGroup] = useState("");
   const handleRegisterGroup = (event) => {
     setRegisterGroup(event.target.value);
     // alert(event.target.value);
   };
-  
+  useEffect(() => {
+    console.table(selectNames);
+  });
+
   const nextStep = (event) => {
     event.preventDefault();
     // alert(registerGroup)
-    switch(registerGroup) {
-      case "1": navigate("/register-customer/tef"); break;
-      case "2": navigate("/register-customer/fei-thai"); break;
-      case "3": navigate("/register-customer/fei-inter"); break;
+    switch (registerGroup) {
+      case "Club":
+        navigate("/register-customer/tef");
+        break;
+      case "TEF":
+        navigate("/register-customer/fei-thai");
+        break;
+      case "TFI":
+        navigate("/register-customer/fei-inter");
+        break;
     }
-  }
+    // switch (registerGroup) {
+    //   case "1":
+    //     navigate("/register-customer/tef");
+    //     break;
+    //   case "2":
+    //     navigate("/register-customer/fei-thai");
+    //     break;
+    //   case "3":
+    //     navigate("/register-customer/fei-inter");
+    //     break;
+    // }
+  };
 
   return (
     <PageContainer
@@ -71,15 +94,15 @@ const RegisterCustomer = () => {
       // background="linear-gradient(#37689A 0%, #64BEFF 50%, #0F4174 100%)"
     >
       <Box
-        // sx={{
-        //   position: "relative",
-        //   content: '""',
-        //   background: "linear-gradient(#37689A 0%, #64BEFF 50%, #0F4174 100%)",
-        //   animation: "gradient 15s ease infinite",
-        //   position: "absolute",
-        //   height: "100vh",
-        //   width: "100vw",
-        // }}
+      // sx={{
+      //   position: "relative",
+      //   content: '""',
+      //   background: "linear-gradient(#37689A 0%, #64BEFF 50%, #0F4174 100%)",
+      //   animation: "gradient 15s ease infinite",
+      //   position: "absolute",
+      //   height: "100vh",
+      //   width: "100vw",
+      // }}
       >
         <Grid
           container
@@ -95,8 +118,10 @@ const RegisterCustomer = () => {
             xl={6}
             display={{ xs: "none", lg: "block" }}
           >
-            <Box mt={2} ml={2}><Logo /></Box>
-            
+            <Box mt={2} ml={2}>
+              <Logo />
+            </Box>
+
             {/* <div style={{ margin: "20px" }}>
               <img src={logo_TEF} alt="logo_TEF" width={100} />
             </div> */}
@@ -116,54 +141,31 @@ const RegisterCustomer = () => {
               sx={{ p: 4, zIndex: 1, width: "100%", maxWidth: "700px" }}
             >
               <Box display="flex" alignItems="center" justifyContent="center">
-                <div style={{ margin: "20px", maxWidth:"50%" }}>
+                <div style={{ margin: "20px", maxWidth: "50%" }}>
                   <img src={logo_TEF_Text} alt="logo_TEF_Text" width={"100%"} />
                 </div>
               </Box>
-              <Typography fontWeight="700" variant="h3" mb={1}>
+              {/* <Typography fontWeight="700" variant="h3" mb={1}>
                 Wellcome to Register Customer
-              </Typography>
+              </Typography> */}
               <Box mb={5}>
                 <FormControl fullWidth>
-                  <Typography fontWeight="300" variant="h5" mb={1}>
-                    ประเภทผู้ลงทะเบียน
+                  <Typography fontWeight="500" variant="h4" mb={1}>
+                    Registration type*
                   </Typography>
                   <Select
                     id="register-type-select"
-                    value={registerType}
+                    // value={registerType}
                     placeholder="Select an option..."
-                    // renderValue={() => {
-                    //   if (registerType === 0) {
-                    //     return <em>Placeholder</em>;
-                    //   }
-                    //   else {
-                    //     return <em>{selected}</em>;
-                    //   }
-                    // }}
-                    // value={age}
-                    // placeholder={<div>Type to search</div>}
-                    // placeholder="Type to search"
-                    // label="Age"
-                    // renderValue={(selected) => {
-                    //   if (selected.length === 0) {
-                    //     return <em>Placeholder</em>;
-                    //   }
-                    // }}
-                    onChange={handleChange}
+                    onChange={handleRegisterGroup}
                   >
-                    {/* <MenuItem disabled value="">
-                      <em>Placeholder</em>
-                    </MenuItem> */}
-                    <MenuItem value={"1"} name={"สโมสร"}>
-                      สโมสร
-                    </MenuItem>
-                    <MenuItem value={"2"} name={"นักกีฬา"}>
-                      นักกีฬา
-                    </MenuItem>
+                    {selectNames.map((item) => (
+                      <MenuItem value={item.value}>{item.name}</MenuItem>
+                    ))}
                   </Select>
                 </FormControl>
               </Box>
-              <Box mb={5}>
+              {/* <Box mb={5}>
                 <FormControl>
                   <Typography fontWeight="300" variant="h5" mb={1}>
                     เลือกประเภทที่ต้องการทะเบียน
@@ -190,9 +192,33 @@ const RegisterCustomer = () => {
                     />
                   </RadioGroup>
                 </FormControl>
+              </Box> */}
+              
+              <Box
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+                mb={2}
+              >
+                <Button
+                  variant="contained"
+                  color="primary"
+                  fullWidth
+                  onClick={nextStep}
+                  disabled={registerGroup===""}
+                >
+                  Ok
+                </Button>
               </Box>
-              <Box display="flex" alignItems="center" justifyContent="center" mb={5}>
-                <Button variant="outlined" onClick={nextStep}>ไปต่อ</Button>
+              <Box
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+                mb={5}
+              >
+                <Button variant="outlined" fullWidth onClick={clickBackToLogin}>
+                  Back to Login
+                </Button>
               </Box>
             </Card>
           </Grid>

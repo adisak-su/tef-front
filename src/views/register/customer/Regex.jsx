@@ -62,7 +62,11 @@ export function isValidate(type, value) {
     case "text":
       return isText(value);
       break;
-    default:
+      case "date":
+        return true;
+        break;
+  
+      default:
       return { status: false, message: "เกิดข้อผิดผลาดการเรียกใช้งาน!!!" };
   }
 }
