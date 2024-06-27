@@ -708,11 +708,10 @@ Equestrian Sports Association Team of Thailand
                 }}
               >
                 <Typography width="100%" fontWeight="700" variant="h3" mb={1}>
-                  FEI Athlete Registration 2024
+                TEF Athlete Registration 2024
                 </Typography>
                 <Typography width="100%" fontWeight="700" variant="h3">
-                  Athlete registration form under the Equestrian Sports
-                  Association of Thailand
+                Athlete registration form  under the Equestrian Sports Association of Thailand
                 </Typography>
               </Box>
               <Stack

@@ -133,12 +133,8 @@ const AuthLogin = ({ title, subtitle, subtext }) => {
       </Typography> */}
       <Box>
         {/* {"ยังไม่มีบัญชี? "} */}
-        <Link to="/register-customer/page">
-        <Typography fontWeight="500" variant="h6" mb={1}>
+        <Link to="/register-customer/page" style={{fontWeight:"500",fontSize:"1rem"}} mb={1}>
         Sign up?
-      </Typography>
-        {/* Sign up? */}
-          {/* กรอกแบบฟอร์มเพื่อดำเนินการลงทะเบียนเป็นสมาชิก */}
         </Link>
       </Box>
       <form onSubmit={checkLogin}>
